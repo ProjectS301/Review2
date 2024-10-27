@@ -21,11 +21,11 @@ Ensure you have the following installed: Java Development Kit (JDK) version 11 o
 2. **Database Setup**: Create a new database (e.g., `connexus_db`) in your SQL database. Then, open the `application.properties` file located in the `src/main/resources` directory and update the database connection settings. The properties should look like this: 
 
    ```properties
-   spring.datasource.url=jdbc:postgresql://localhost:5432/connexus_db
-   spring.datasource.username=your_db_username
-   spring.datasource.password=your_db_password
+   spring.datasource.url=jdbc:mysql://localhost:3306/{your db name}
+   spring.datasource.username= {your username}
+   spring.datasource.password= {your password}
+   spring.jpa.show-sql=true
    spring.jpa.hibernate.ddl-auto=update
-   
 Change the localhost:port according the default port of your database. Once you’ve configured the database, proceed to install the necessary dependencies. Open a terminal in the project directory and run `mvn clean install` to download and install all required packages using Maven. This will ensure that all dependencies are set up correctly for the project to function as intended. Also run `npm install` to download the node dependencies.
 
 If you have face any difficulty in any of the tailwind configuration, run this command in terminal: `npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch
