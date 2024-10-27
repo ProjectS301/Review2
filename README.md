@@ -28,6 +28,9 @@ Ensure you have the following installed: Java Development Kit (JDK) version 11 o
    
 Change the localhost:port according the default port of your database. Once you’ve configured the database, proceed to install the necessary dependencies. Open a terminal in the project directory and run `mvn clean install` to download and install all required packages using Maven. This will ensure that all dependencies are set up correctly for the project to function as intended. Also run `npm install` to download the node dependencies.
 
+If you have face any difficulty in any of the tailwind configuration, run this command in terminal: `npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch
+`. 
+
 After the dependencies are installed, you can start the application. Use your IDE’s run feature, or in the terminal, execute `mvn spring-boot:run`. This command will launch the application and make it accessible locally.
 
 With the application running, open your web browser and go to `http://localhost:8080/home`. Here, you should see the Connexus login page, which confirms that the application is up and running. You can explore all the available features within the app. Other pages are still being developed.
