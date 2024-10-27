@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.scm</groupId>
-	<artifactId>scm2.0</artifactId>
+	<artifactId>connexus</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>scm2.0</name>
+	<name>connexus</name>
 	<description>Project for storing and managing contacts on cloud</description>
 	<url/>
 	<licenses>
