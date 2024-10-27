@@ -25,4 +25,11 @@ Ensure you have the following installed: Java Development Kit (JDK) version 11 o
    spring.datasource.username=your_db_username
    spring.datasource.password=your_db_password
    spring.jpa.hibernate.ddl-auto=update
+Once you’ve configured the database, proceed to install the necessary dependencies. Open a terminal in the project directory and run `mvn clean install` to download and install all required packages using Maven. This will ensure that all dependencies are set up correctly for the project to function as intended.
+
+After the dependencies are installed, you can start the application. Use your IDE’s run feature, or in the terminal, execute `mvn spring-boot:run`. This command will launch the application and make it accessible locally.
+
+With the application running, open your web browser and go to `http://localhost:8080`. Here, you should see the Connexus login page, which confirms that the application is up and running. You can now sign up or log in, add contacts, and explore all the available features within the app.
+
+If you encounter any issues, ensure that all configurations are correct and that the database server is running. Additional troubleshooting might involve checking the logs or verifying the database connection in the `application.properties` file.
 
