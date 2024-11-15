@@ -12,7 +12,13 @@ Follow these steps to set up and run Connexus on your local machine.
 
 ### Prerequisites
 
-Ensure you have the following installed: Java Development Kit (JDK) version 11 or later, Maven for dependency management, an SQL database (PostgreSQL or MySQL is recommended), and an IDE like IntelliJ, Eclipse, or VS Code with Java support. You’ll also need Git to clone the repository.
+Before you start, ensure you have the following installed:
+
+- **Java** (JDK 11 or later)
+- **Spring Boot** (via Spring Initializr or your existing Spring Boot project setup)
+- **Windows** (for setting environment variables on Windows)
+- **Google and GitHub Accounts**: You'll need to have accounts with both Google and GitHub to create OAuth credentials.
+- **Spring Boot Project**: Clone or set up your Spring Boot project.
 
 ### Installation and Setup
 
@@ -31,7 +37,93 @@ Change the localhost:port according the default port of your database. Once you�
 If you have face any difficulty in any of the tailwind configuration, run this command in terminal: `npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch
 `. 
 
-After the dependencies are installed, you can start the application. Use your IDE’s run feature, or in the terminal, execute `mvn spring-boot:run`. This command will launch the application and make it accessible locally.
+---
+## Creating Google OAuth Credentials
+
+Follow these steps to create OAuth credentials for Google:
+
+1. **Go to Google Cloud Console**:
+   - Visit [Google Cloud Console](https://console.cloud.google.com/).
+   
+2. **Create a Project**:
+   - Click on **"Select a Project"** or **"Create a New Project"**.
+   - Name your project and click **"Create"**.
+
+3. **Enable the Google API**:
+   - In the left sidebar, go to **"APIs & Services" > "Library"**.
+   - Search for **Google+ API** or any other relevant Google API (e.g., Gmail API) and click **"Enable"**.
+
+4. **Create OAuth Credentials**:
+   - In the left sidebar, go to **"APIs & Services" > "Credentials"**.
+   - Click on **"Create Credentials"** and select **OAuth 2.0 Client IDs**.
+   - Configure the consent screen by entering the required details (such as Application name, support email, etc.).
+   - Choose **"Web application"** as the application type.
+   - Under **Authorized redirect URIs**, enter the URI that your application will use (e.g., `http://localhost:8080/login/oauth2/code/google`).
+   - Click **"Create"**.
+
+5. **Get Your Client ID and Secret**:
+   - After creating the credentials, you will be presented with your **Client ID** and **Client Secret**. Copy these values for later use.
+
+---
+
+## Creating GitHub OAuth Credentials
+
+Follow these steps to create OAuth credentials for GitHub:
+
+1. **Go to GitHub Developer Settings**:
+   - Visit [GitHub Developer Settings](https://github.com/settings/developers).
+
+2. **Create a New OAuth Application**:
+   - Click on **"New OAuth App"**.
+
+3. **Fill in the Application Details**:
+   - **Application Name**: Enter a name for your application.
+   - **Homepage URL**: Enter the URL for your project (e.g., `http://localhost:8080`).
+   - **Authorization callback URL**: Enter the URL that GitHub should redirect to after authentication (e.g., `http://localhost:8080/login/oauth2/code/github`).
+   
+4. **Get Your Client ID and Secret**:
+   - After creating the application, GitHub will display your **Client ID** and **Client Secret**. Copy these values for later use.
+
+---
+
+## Setting Up OAuth Credentials in Spring Boot
+
+1. **Set Up Environment Variables on Your System**:
+   Store your Google and GitHub OAuth credentials as environment variables on your system to keep them secure.
+
+   ### For Google:
+   - Open Command Prompt or PowerShell.
+   - Run the following commands to set the credentials as environment variables:
+
+     ```cmd
+     setx GOOGLE_CLIENT_ID "your-google-client-id"
+     setx GOOGLE_CLIENT_SECRET "your-google-client-secret"
+
+     ```
+
+   ### For GitHub:
+   - Run the following commands to set the credentials as environment variables:
+
+     ```cmd
+     setx GITHUB_CLIENT_ID "your-github-client-id"
+     setx GITHUB_CLIENT_SECRET "your-github-client-secret"
+     ```
+
+   > **Note**: Make sure to replace `"your-google-client-id"`, `"your-google-client-secret"`, `"your-github-client-id"`, and `"your-github-client-secret"` with the actual values you obtained from the Google and GitHub Developer consoles.
+
+2. **Use the Environment Variables in `application.properties`**:
+   In your `application.properties` or `application.yml`, reference the environment variables like this:
+
+   ```properties
+   # application.properties
+   spring.security.oauth2.client.registration.google.client-id=${GOOGLE_CLIENT_ID}
+   spring.security.oauth2.client.registration.google.client-secret=${GOOGLE_CLIENT_SECRET}
+
+   spring.security.oauth2.client.registration.github.client-id=${GITHUB_CLIENT_ID}
+   spring.security.oauth2.client.registration.github.client-secret=${GITHUB_CLIENT_SECRET}
+
+
+After the dependencies are installed and OAuth credentials setup you can start the application. Use your IDE’s run feature, or in the terminal, execute `mvn spring-boot:run`. This command will launch the application and make it accessible locally.
 
 With the application running, open your web browser and go to `http://localhost:8080/home`. Here, you should see the Connexus login page, which confirms that the application is up and running. You can explore all the available features within the app. Other pages are still being developed.
 
