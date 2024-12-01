@@ -7,7 +7,7 @@ Connexus is a Java-based smart contact management application designed to help u
 Connexus includes user authentication with features for sign-up and login, allowing users to securely access their accounts. It also offers contact management functionality, enabling users to add, edit, and delete contacts. The project is built with a responsive UI using Tailwind CSS, ensuring a modern and mobile-friendly design across devices.
 
 ## Project Structure
-    ```This is the directory structure of the **Connexus** project.
+    This is the directory structure of the **Connexus** project.
     Connexus/
    
     .mvn/                            # Maven wrapper files
@@ -78,6 +78,88 @@ Before you start, ensure you have the following installed:
    spring.jpa.hibernate.ddl-auto=update
 Change the localhost:port according the default port of your database. Once you’ve configured the database, proceed to install the necessary dependencies. Open a terminal in the project directory and run `mvn clean install` to download and install all required packages using Maven. This will ensure that all dependencies are set up correctly for the project to function as intended. Also run `npm install` to download the node dependencies.
 
+#### If Maven(mvn) is not installed, follow the given steps:
+
+## Apache Maven Installation Guide
+
+Apache Maven is a powerful build automation tool used primarily for Java projects. Follow these steps to install Maven on your system.
+
+### Step 1: Download Apache Maven
+
+1. Visit the official [Apache Maven Download Page](https://maven.apache.org/download.cgi).
+2. Download the latest binary archive:
+    - **Windows:** `apache-maven-<version>-bin.zip`
+    - **Linux/macOS:** `apache-maven-<version>-bin.tar.gz`
+
+### Step 2: Extract the Archive
+
+#### For Windows:
+
+- Use tools like **7-Zip**, **WinRAR**, or **Windows Explorer** to extract the archive.
+- Move the extracted folder to a directory like:
+    
+    ```makefile
+    C:\Program Files\Apache\Maven
+    ```
+    
+
+#### For Linux/macOS:
+
+- Open a terminal and run the following command to extract:
+    
+    ```bash
+    tar -xvzf apache-maven-<version>-bin.tar.gz -C /opt
+    ```
+    
+- The Maven directory will now be located at `/opt/apache-maven-<version>`.
+
+   
+### Step 3: Set Up Environment Variables
+
+#### For Windows:
+
+1. Open **System Properties**:
+    - Right-click **This PC** (or **My Computer**) > **Properties** > **Advanced System Settings** > **Environment Variables**.
+2. Add a new system variable:
+    - **Variable name:** `MAVEN_HOME`
+    - **Variable value:** `C:\Program Files\Apache\Maven`
+3. Update the `PATH` variable:
+    - Select `PATH` in **System Variables**, click **Edit**, and add:
+        
+        ```perl
+        ;%MAVEN_HOME%\bin
+        ```
+        
+#### For Linux/macOS:
+
+1. Open your shell configuration file:
+    - For **Bash** users: `~/.bashrc`
+    - For **Zsh** users: `~/.zshrc`
+    
+    ```bash
+    nano ~/.bashrc
+    ```
+    
+2. Add the following lines to the file:
+    
+    ```bash
+    export MAVEN_HOME=/opt/apache-maven-<version>
+    export PATH=$MAVEN_HOME/bin:$PATH
+    ```
+    
+3. Save the file and reload the configuration:
+    ```bash
+    source ~/.bashrc
+    ```
+
+### Step 4: Verify the Installation
+
+1. Open a terminal or command prompt.
+2. Run the following command:
+
+    ```bash
+    mvn -v
+
 If you have face any difficulty in any of the tailwind configuration, run this command in terminal: `npx tailwindcss -i ./src/main/resources/static/css/input.css -o ./src/main/resources/static/css/output.css --watch
 `. 
 
@@ -93,16 +175,21 @@ Follow these steps to create OAuth credentials for Google:
    - Click on **"Select a Project"** or **"Create a New Project"**.
    - Name your project and click **"Create"**.
 
-3. **Enable the Google API**:
-   - In the left sidebar, go to **"APIs & Services" > "Library"**.
-   - Search for **Google+ API** or any other relevant Google API (e.g., Gmail API) and click **"Enable"**.
+3. **Create OAuth Consent Screen**:
+   - In the left sidebar, go to **"APIs & Services" > "OAuth consent screen"**.
+   - Select **"User type"** (External) and click **"Create"**.
+   - Add app details, in "App Domain", add Application Homepage link (e.g., `http://localhost:8081`).
+   - Add developer contact information ("your-email-id").
+   - Open **"Scopes"** and add scopes "/userinfo.profile", "/userinfo.email" and "openid" (Add else as you wish).
+   - Click **"Save and Continue"**.
 
 4. **Create OAuth Credentials**:
    - In the left sidebar, go to **"APIs & Services" > "Credentials"**.
    - Click on **"Create Credentials"** and select **OAuth 2.0 Client IDs**.
    - Configure the consent screen by entering the required details (such as Application name, support email, etc.).
    - Choose **"Web application"** as the application type.
-   - Under **Authorized redirect URIs**, enter the URI that your application will use (e.g., `http://localhost:8080/login/oauth2/code/google`).
+   - Under **Authorized JavaScript origins**, enter the URI that your application will use (e.g., `http://localhost:8081`).
+   - Under **Authorized redirect URIs**, enter the URI that your application will use (e.g., `http://localhost:8081/login/oauth2/code/google`).
    - Click **"Create"**.
 
 5. **Get Your Client ID and Secret**:
@@ -122,8 +209,9 @@ Follow these steps to create OAuth credentials for GitHub:
 
 3. **Fill in the Application Details**:
    - **Application Name**: Enter a name for your application.
-   - **Homepage URL**: Enter the URL for your project (e.g., `http://localhost:8080`).
-   - **Authorization callback URL**: Enter the URL that GitHub should redirect to after authentication (e.g., `http://localhost:8080/login/oauth2/code/github`).
+   - **Homepage URL**: Enter the URL for your project (e.g., `http://localhost:8081`).
+   - **Authorization callback URL**: Enter the URL that GitHub should redirect to after authentication (e.g., `http://localhost:8081/login/oauth2/code/github`).
+   - Under **"Account Permissions"**, enable **"Profile (Read and Write)"**, enable **"Email addresses(Read Only)"**.
    
 4. **Get Your Client ID and Secret**:
    - After creating the application, GitHub will display your **Client ID** and **Client Secret**. Copy these values for later use.
