@@ -7,7 +7,7 @@ Connexus is a Java-based smart contact management application designed to help u
 Connexus includes user authentication with features for sign-up and login, allowing users to securely access their accounts. It also offers contact management functionality, enabling users to add, edit, and delete contacts. The project is built with a responsive UI using Tailwind CSS, ensuring a modern and mobile-friendly design across devices.
 
 ## Project Structure
-    ```This is the directory structure of the **Connexus** project.
+    This is the directory structure of the **Connexus** project.
     Connexus/
    
     .mvn/                            # Maven wrapper files
