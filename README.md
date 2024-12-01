@@ -6,6 +6,50 @@ Connexus is a Java-based smart contact management application designed to help u
 
 Connexus includes user authentication (sign-up and login), contact management features like adding, editing, and deleting contacts, and a responsive UI built with Tailwind CSS.
 
+## Project Structure
+
+Connexus/
+│
+├── .mvn/                           # Maven wrapper files
+├── src/                             # Source code directory
+│   ├── main/                        # Main application code
+│   │   ├── java/                    # Java source files
+│   │   │   └── com/                 # Base package for the project
+│   │   │       └── scm/             # Main application package
+│   │   │           ├── config/      # Configuration classes (e.g., Spring config)
+│   │   │           ├── controllers/ # Controller classes for handling requests
+│   │   │           ├── entities/    # JPA entity classes (models)
+│   │   │           ├── forms/       # Form/DTO classes for data transfer
+│   │   │           ├── helpers/     # Helper/util classes
+│   │   │           ├── repositories/ # Database repositories
+│   │   │           ├── services/    # Service classes with business logic
+│   │   │           └── Application.java  # Main Spring Boot application class
+│   │   ├── resources/                # Resources for the application
+│   │   │   ├── static/               # Static assets like images, CSS, JS
+│   │   │   ├── templates/            # Thymeleaf templates (HTML files)
+│   │   │   │   ├── user/            # Templates specific to user functionality
+│   │   │   │   ├── about.html       # About page template
+│   │   │   │   ├── base.html        # Base layout template
+│   │   │   │   ├── contact.html     # Contact page template
+│   │   │   │   ├── home.html        # Home page template
+│   │   │   │   ├── index.html       # Index page template
+│   │   │   │   ├── login.html       # Login page template
+│   │   │   │   ├── message.html     # Message page template
+│   │   │   │   ├── navbar.html      # Navbar layout template
+│   │   │   │   ├── register.html    # Registration page template
+│   │   │   │   └── services.html    # Services page template
+│   │   │   └── application.properties # Spring Boot application configuration
+├── target/                          # Build output (compiled code, JAR files)
+├── .gitignore                       # Git ignore file
+├── mvnw                             # Maven wrapper for Unix-based systems
+├── mvnw.cmd                         # Maven wrapper for Windows
+├── pom.xml                          # Maven project configuration (dependencies, plugins)
+├── README.md                        # Project documentation
+├── tailwind.config.js               # Tailwind CSS configuration
+├── package-lock.json                # Front-end package lock file
+└── package.json                     # Front-end project configuration
+
+
 ## Getting Started
 
 Follow these steps to set up and run Connexus on your local machine.
