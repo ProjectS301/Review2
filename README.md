@@ -68,7 +68,7 @@ Before you start, ensure you have the following installed:
 
 1. **Clone the Repository**: Start by cloning the repository. Copy the link from the code option in the repository in github. Run the command : `git clone {the link you'll get}` and navigating into the project directory with `cd Review1`.
 
-2. **Database Setup**: Create a new database (e.g., `connexus_db`) in your SQL database. Then, open the `application.properties` file located in the `src/main/resources` directory and update the database connection settings. The properties should look like this: 
+2. **Database Setup**: Create a new database (e.g., `connexus_db`) in your MySQL database. Then, open the `application.properties` file located in the `src/main/resources` directory and update the database connection settings. The properties should look like this: 
 
    ```properties
    spring.datasource.url=jdbc:mysql://localhost:3306/{your db name}
